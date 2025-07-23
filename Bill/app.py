@@ -1,3 +1,5 @@
+
+import os
 from flask import Flask, render_template, request
 from database import init_db, insert_bill_item
 
@@ -26,5 +28,10 @@ def index():
         return render_template('bill.html', items=bill_items, total=total)
     return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+if _name_ == "_main_":
+    port = int(os.environ.get("PORT", 5000))  # 5000 for local fallback
+    app.run(host="0.0.0.0", port=port)    
+    
+
+
